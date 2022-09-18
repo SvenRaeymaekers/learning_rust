@@ -1,12 +1,10 @@
-use std::io;
+use std::io::{self, Read};
 
 fn main() {
-    println!("Hello, world");
-    let mut user_input = String::new();
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Can't read user input.");
 
-    io::stdin()
-        .read_line(&mut user_input)
-        .expect("failed to read user input line.");
+    let int_input: i64 = input.trim().parse().unwrap();
 
-    println!("{}", user_input);
+    println!("{}", int_input + 2);
 }
